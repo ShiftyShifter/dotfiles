@@ -1,1 +1,5 @@
 key.txt.age
+chezmoi.code-workspace
+run_once
+run_once_before_decrypt-private-key.sh.tmpl
+README.md
