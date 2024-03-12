@@ -1,2 +1,4 @@
 ---
 # vars file for base
+
+sourceDir: "/home/dameon/.local/share/chezmoi"

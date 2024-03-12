@@ -28,8 +28,8 @@ copy_files() {
 
 # Function to start reflector service and timer
 start_reflector() {
-    sudo systemctl start reflector.service
     sudo systemctl start reflector.timer
+    sudo systemctl start reflector.service
     echo "Mirrorlist updated and timer set for weekly"
 }
 
@@ -43,6 +43,9 @@ if ! systemctl is-active --quiet reflector.timer; then
 else
     echo "reflector.timer is already running."
 fi
+
+
+sudo pacman -Syu
 
 
 

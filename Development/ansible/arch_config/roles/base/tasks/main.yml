@@ -1,2 +1,5 @@
 ---
 # tasks file for base
+- name: Debug Message
+  ansible.builtin.debug:
+    msg: "So far so good!!!"
