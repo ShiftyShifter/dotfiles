@@ -1,6 +1,6 @@
 ---
 # tasks file for peri
 
-- name: Peri task debug message
+- name: "{{ role }} debug message"
   ansible.builtin.debug:
-    msg: "Peri tasks accessed"
+    msg: "{{ role }} tasks accessed"

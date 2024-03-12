@@ -1,5 +1,6 @@
 {
     "yaml.schemas": {
         "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks": "file:///home/dameon/.local/share/chezmoi/Development/ansible/arch_config/roles/base/tasks/main.yml"
-    }
+    },
+    "ansible.python.interpreterPath": "/home/dameon/.pyenv/versions/3.12.1/envs/arch_config/bin/python"
 }
