@@ -4,9 +4,9 @@
   strategy: linear
   gather_facts: false
   roles:
-    - 1_pre
-    - 2_peri
-    - 3_post
+    - pre
+    - peri
+    - post
 
  
 
