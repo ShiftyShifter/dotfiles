@@ -3,6 +3,7 @@
   hosts: localhost
   strategy: linear
   gather_facts: false
+  roles: base
   vars_files:
     - /home/dameon/.local/share/chezmoi/Development/ansible/arch_config/roles/base/vars/main.yml
 
