@@ -1,0 +1,6 @@
+---
+# tasks file for post
+
+- name: Post task debug message
+  ansible.builtin.debug:
+    msg: "Post tasks accessed"

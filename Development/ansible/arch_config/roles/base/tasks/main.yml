@@ -1,5 +1,0 @@
----
-
-- name: Debug Message
-  ansible.builtin.debug:
-    msg: "So far so good!!!"

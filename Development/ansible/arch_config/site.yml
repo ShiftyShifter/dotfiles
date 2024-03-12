@@ -4,24 +4,13 @@
   strategy: linear
   gather_facts: false
   roles:
-    - base
-  vars_files:
-    - /home/dameon/.local/share/chezmoi/Development/ansible/arch_config/roles/base/vars/main.yml
+    - 1_pre
+    - 2_peri
+    - 3_post
 
-  vars_prompt:
-    - name: become_pass
-      prompt: "Enter the become password"
-      private: true # Do not echo the input
-      encrypt: "sha256_crypt" # Encrypting the password (optional, for demonstration)
-      confirm: true # Ask for confirmation
+ 
 
-  tasks:
-    - name: Store become password securely
-      ansible.builtin.copy:
-        content: "{{ become_pass }}"
-        dest: "{{ sourceDir }}/Development/ansible/arch_config/roles/base/vars/become_pass.yml"
-        mode: '0600'
-      delegate_to: localhost
+
       # run_once: true
 
 # - name: Run Once Before PlayBooks
