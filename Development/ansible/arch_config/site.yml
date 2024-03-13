@@ -13,9 +13,9 @@
   pre_tasks:
     - name: Store become password securely
       ansible.builtin.copy:
-      content: "{{ become_password }}"
-      dest: "{{ source_dir }}/Development/ansible/arch_config/roles/pre/vars/become_pass.yml"
-      mode: '0600'
+        content: "{{ become_password }}"
+        dest: "{{ source_dir }}/Development/ansible/arch_config/roles/pre/vars/become_pass.yml"
+        mode: '0600'
       delegate_to: localhost
 
   roles:
