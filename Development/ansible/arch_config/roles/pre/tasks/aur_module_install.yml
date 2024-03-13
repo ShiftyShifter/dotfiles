@@ -4,7 +4,7 @@
   block:
   - name: Creates directory
     ansible.builtin.file:
-      path: "{{ pre_home_dir }}/.ansible/plugins/modules"
+      path: "{{ home_dir }}/.ansible/plugins/modules"
       state: directory
       owner: "{{ user_name}}"
       group: "{{ user_name}}"
@@ -17,5 +17,5 @@
     ansible.builtin.uri:
       url: 'https://raw.githubusercontent.com/kewlfft/ansible-aur/master/plugins/modules/aur.py'
       method: GET
-      dest: "{{ pre_home_dir }}/.ansible/plugins/modules/aur.py"
+      dest: "{{ home_dir }}/.ansible/plugins/modules/aur.py"
     register: result
