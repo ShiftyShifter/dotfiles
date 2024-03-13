@@ -4,18 +4,18 @@
   block:
   - name: Creates directory
     ansible.builtin.file:
-      path: "{{ home_dir }}/.ansible/plugins/modules"
+      path: "{{ pre_home_dir }}/.ansible/plugins/modules"
       state: directory
-      owner: dameon
-      group: dameon
+      owner: "{{ user_name}}"
+      group: "{{ user_name}}"
       recurse: true
       mode: "0755"
 
   - name: Install aur package helper
     become: true
-    become_user: dameon
+    become_user: "{{ user_name}}"
     ansible.builtin.uri:
       url: 'https://raw.githubusercontent.com/kewlfft/ansible-aur/master/plugins/modules/aur.py'
       method: GET
-      dest: "{{ home_dir }}/.ansible/plugins/modules/aur.py"
+      dest: "{{ pre_home_dir }}/.ansible/plugins/modules/aur.py"
     register: result
