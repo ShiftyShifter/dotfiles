@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook -i "{{ .chezmoi.sourceDir }}/Development/ansible/arch_config/inventory.ini"  "{{ .chezmoi.sourceDir }}/Development/ansible/arch_config/site.yml" --ask-vault-pass
+ansible-playbook -vvv -i "{{ .chezmoi.sourceDir }}/Development/ansible/arch_config/inventory.ini"  "{{ .chezmoi.sourceDir }}/Development/ansible/arch_config/site.yml" --ask-vault-pass
