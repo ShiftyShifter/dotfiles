@@ -3,6 +3,7 @@
 - name: Install ansible aur module
   block:
   - name: Creates directory
+    become: true
     ansible.builtin.file:
       path: "{{ home_dir }}/.ansible/plugins/modules"
       state: directory
