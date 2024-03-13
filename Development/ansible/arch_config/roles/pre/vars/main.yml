@@ -2,3 +2,5 @@
 # vars file for pre
 
 pre_role: "pre"
+
+directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/pre/tasks"
