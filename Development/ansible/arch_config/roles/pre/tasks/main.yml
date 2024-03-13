@@ -1,7 +1,5 @@
 ---
 
 - name: Pre tasks
-  ansible.builtin.include_tasks:
-    - "{{ directory }}/A.yml"
-    - "{{ directory }}/B.yml"
-    - "{{ directory }}/C.yml"
+  ansible.builtin.include_tasks: A.yml
+  
