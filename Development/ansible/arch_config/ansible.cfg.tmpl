@@ -1,6 +1,6 @@
-ansible_become_password: {{ vault_ansible_become_pass }}
 
 
 [defaults]
 inventory="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/inventory.ini"
 roles_path="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/roles"
+ansible_become_password="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/group_vars/vault_ansible_become_pass.yml"
