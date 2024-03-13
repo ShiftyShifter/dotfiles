@@ -2,4 +2,4 @@
 inventory="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/inventory/inventory.ini"
 roles_path="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/roles"
 
-ansible_become_password: {{ vault_ansible_become_pass }}
+ansible_become_password="{{ .chezmoi.homeDir }}/Development/ansible/arch_config/{{ vault_ansible_become_pass }}"
