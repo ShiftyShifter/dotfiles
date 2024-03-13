@@ -6,7 +6,7 @@
   vars_prompt:
     - name: become_password
       prompt: "Enter the become password"
-      private: yes # Do not echo the input
+      private: true # Do not echo the input
       encrypt: "sha256_crypt" # Encrypting the password (optional, for demonstration)
       confirm: true # Ask for confirmation
 
