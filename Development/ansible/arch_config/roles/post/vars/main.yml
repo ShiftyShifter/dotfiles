@@ -2,3 +2,5 @@
 # vars file for post
 
 post_role: "post"
+
+directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/post/tasks"

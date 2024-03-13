@@ -1,0 +1,39 @@
+---
+
+- name: Install Pikaur and use to install aur packages
+  block:
+    - name: Install AUR packages
+      become: true
+      block:
+        - name: Install pikaur aur helper
+          aur:
+            name: pikaur
+            use: makepkg
+            state: latest
+          become: true
+          become_user: aur_builder
+
+        - name: Gather package facts
+          ansible.builtin.package_facts:
+            manager: pacman
+
+        - name: Install aur repo packages
+          aur:
+            name: "{{ item }}"
+            state: latest
+            use: pikaur
+          loop:
+            - mhwd-nvidia-470xx
+            - gdm-settings
+            - gnome-extensions-cli
+            - extension-manager
+            - ocs-url
+            - pyenv-virtualenv
+            - sublime-text-4
+            - ttf-meslo-nerd-font-powerlevel10k
+            - visual-studio-code-bin
+            - youtube-music-bin
+            - oh-my-zsh-git
+            - zsh-theme-powerlevel10k
+          when: "item not in ansible_facts.packages.keys()"
+

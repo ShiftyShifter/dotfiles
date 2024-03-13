@@ -2,3 +2,5 @@
 # vars file for peri
 
 peri_role: "peri"
+
+directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/peri/tasks"

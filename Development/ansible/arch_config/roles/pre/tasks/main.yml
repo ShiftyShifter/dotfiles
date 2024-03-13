@@ -1,5 +1,16 @@
 ---
 
 - name: Pre tasks
-  ansible.builtin.include_tasks: A.yml
-  
+  ansible.builtin.include_tasks: aur_module_install.yml
+
+- name: Pre tasks
+  ansible.builtin.include_tasks: aur_builder_user.yml
+
+- name: Pre tasks
+  ansible.builtin.include_tasks: aur_package_install.yml
+
+- name: Pre tasks
+  ansible.builtin.include_tasks: package_install.yml
+
+- name: Pre tasks
+  ansible.builtin.include_tasks: gnome-extensions.yml

@@ -1,6 +1,6 @@
 ---
 # tasks file for post
 
-- name: Debug message for {{ role }}
+- name: "Debug message for {{ role }}"
   ansible.builtin.debug:
     msg: "{{ post_role }} tasks accessed"

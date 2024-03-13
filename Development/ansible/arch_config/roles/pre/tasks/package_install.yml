@@ -1,0 +1,54 @@
+---
+# tasks file for pre
+- name: Pacman Install Packages
+  block:
+  - name: Update and upgrade all packages
+    become: true
+    community.general.pacman:
+      update_cache: true
+      upgrade: true
+
+  - name: System setup | utilities | install utility packages
+    tags: packages,system,settings
+    become: true
+    community.general.pacman:
+      name:
+        # python dependencies
+        # -------------------|
+        - base-devel
+        - zlib
+        - bzip2
+        - libffi
+        - openssl
+        - sqlite
+        - tk
+        # -------------------|
+        - zsh
+        - firefox
+        - zoxide
+        - fzf
+        - fastfetch
+        - git
+        - pyenv
+        - python-psutil
+        - tree
+        - thunderbird
+        - jq
+        - gparted
+        - tldr
+        - kitty
+        - man-db
+        - man-pages
+        - dconf
+      state: present
+
+  # Settings
+  # -----------------------------------------|
+  - name: Change shell to zsh
+    become: true
+    ansible.builtin.user:
+      name: "{{ username }}"
+      shell: /usr/bin/zsh
+  # -----------------------------------------|
+
+  

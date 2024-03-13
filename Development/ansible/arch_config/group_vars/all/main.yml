@@ -1,4 +1,0 @@
-
-
-source_dir: "/home/dameon/.local/share/chezmoi"
-ansible_dev_dir: "Development/ansible/arch_config"

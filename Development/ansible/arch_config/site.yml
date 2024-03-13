@@ -2,7 +2,6 @@
 - name: Prompt for become password and store securely
   hosts: localhost
   gather_facts: false
-  become: true
 
   roles:
     - pre
