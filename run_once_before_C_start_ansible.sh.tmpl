@@ -1,4 +1,4 @@
 #!/bin/sh
 
-ansible-playbook {{ .chezmoi.sourceDir }}/Development/ansible/arch_config/site.yml
+ansible-playbook {{ .chezmoi.sourceDir }}/Development/ansible/arch_config/site.yml --ask-vault-pass
 # ansible-playbook {{ .chezmoi.sourceDir }}/Development/ansible/arch_config/roles/base/tasks/main.yml --become-password-file="{{ .chezmoi.sourceDir }}/Development/ansible/arch_config/roles/base//vars/become_pass.yml"
