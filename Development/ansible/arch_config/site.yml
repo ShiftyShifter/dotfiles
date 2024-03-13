@@ -5,11 +5,11 @@
   gather_facts: false
 
   vars_prompt:
-  - name: become_pass
-    prompt: "Enter the become password"
-    private: true # Do not echo the input
-    encrypt: "sha256_crypt" # Encrypting the password (optional, for demonstration)
-    confirm: true # Ask for confirmation
+    - name: become_pass
+      prompt: "Enter the become password"
+      private: true # Do not echo the input
+      encrypt: "sha256_crypt" # Encrypting the password (optional, for demonstration)
+      confirm: true # Ask for confirmation
 
   pre_tasks:
     - name: Store become password securely
