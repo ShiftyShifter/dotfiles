@@ -1,6 +1,6 @@
 ---
 # tasks file for pre
 
-- name: debug message for {{ role }}
+- name: task A Debug message for {{ role }}
   ansible.builtin.debug:
     msg: "{{ pre_role }} tasks accessed"
