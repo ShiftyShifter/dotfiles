@@ -5,7 +5,7 @@
   gather_facts: false
 
   vars_prompt:
-    - name: become_pass
+    - name: become_password
       prompt: "Enter the become password"
       private: true # Do not echo the input
       encrypt: "sha256_crypt" # Encrypting the password (optional, for demonstration)
@@ -14,7 +14,7 @@
   pre_tasks:
     - name: Store become password securely
       ansible.builtin.copy:
-      content: "{{ become_pass }}"
+      content: "{{ become_password }}"
       dest: "{{ source_dir }}/Development/ansible/arch_config/roles/pre/vars/become_pass.yml"
       mode: '0600'
       delegate_to: localhost
