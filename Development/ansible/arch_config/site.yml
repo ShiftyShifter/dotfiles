@@ -1,7 +1,7 @@
 ---
 - name: Prompt for become password and store securely
   hosts: localhost
-  strategy: linear
+  # strategy: linear
   gather_facts: false
 
   vars_prompt:
