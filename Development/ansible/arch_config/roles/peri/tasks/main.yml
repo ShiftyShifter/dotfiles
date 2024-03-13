@@ -3,4 +3,4 @@
 
 - name: debug message for {{ role }}
   ansible.builtin.debug:
-    msg: "{{ role }} tasks accessed"
+    msg: "{{ peri_role }} tasks accessed"
