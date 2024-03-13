@@ -2,6 +2,7 @@
 - name: Prompt for become password and store securely
   hosts: localhost
   gather_facts: false
+  become: true
 
   vars_prompt:
     - name: become_password
@@ -22,23 +23,3 @@
     - pre
     - peri
     - post
-
-
-
-
-      # run_once: true
-
-# - name: Run Once Before PlayBooks
-#   hosts: localhost#
-#   become: true
-
-#   vars:
-#     playbook:
-#     - aur_helper.yml
-#     - package_install.yml
-#     - gnome-extensions.yml
-
-#   tasks:
-#     - name: Include and run anothe playbook r {{ item }}
-#       ansible.builtin.include_tasks: "/home/dameon/.local/share/chezmoi/Development/Arch-configuration/playbooks/post_arch-gnome_install/{{ item }}"
-#       loop: "{{ playbook }}"

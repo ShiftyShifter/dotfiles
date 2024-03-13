@@ -1,4 +1,4 @@
 ---
 # vars file for post
 
-role: "post"
+post_role: "post"

@@ -1,4 +1,4 @@
 ---
 # vars file for peri
 
-role: "peri"
+peri_role: "peri"
