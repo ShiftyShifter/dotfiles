@@ -1,6 +1,5 @@
 ---
-
-#  --------------------------------------|
+# Create a special user so aur helper doesn#t require a password to use sudo.
 - name: Create aur_builder user
   block:
     - name: Create the `aur_builder` user
@@ -18,4 +17,3 @@
         create: true
         mode: "0644"
         validate: 'visudo -cf %s'
-#  -------------------------------------------|

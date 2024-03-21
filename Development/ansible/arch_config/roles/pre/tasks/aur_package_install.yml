@@ -11,7 +11,7 @@
             use: makepkg
             state: latest
           become: true
-          become_user: aur_builder
+          become_user: "{{ user_name }}" #aur_builder # Testing what happens when I use my user instead of aur_builder
 
         - name: Gather package facts
           ansible.builtin.package_facts:
@@ -23,6 +23,7 @@
             state: latest
             use: pikaur
           loop:
+            - neovim
             - mhwd-nvidia-470xx
             - gdm-settings
             - gnome-extensions-cli
