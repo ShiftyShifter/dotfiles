@@ -1,16 +1,10 @@
 ---
-- name: Pacman package install
-  ansible.builtin.include_tasks: package_install.yml
 
 - name: Aur module install
   ansible.builtin.include_tasks: aur_module_install.yml
 
-- name: Aur builder user create
-  ansible.builtin.include_tasks: aur_builder_user.yml
-
-- name: Aur package installer
-  ansible.builtin.include_tasks: aur_package_install.yml
+# - name: Aur builder user create
+#   ansible.builtin.include_tasks: aur_builder_user.yml
 
 
-- name: Gnome-extensions install
-  ansible.builtin.include_tasks: gnome-extensions.yml
+

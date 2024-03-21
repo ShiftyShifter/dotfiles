@@ -1,4 +1,9 @@
 ---
+# ************************************************************
+# POTENTIALLY NOT NEEDED - will find out on next clean install
+# ************************************************************
+
+
 # Create a special user so aur helper doesn#t require a password to use sudo.
 - name: Create aur_builder user
   block:

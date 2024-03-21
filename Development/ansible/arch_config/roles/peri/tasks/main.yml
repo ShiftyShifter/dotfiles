@@ -1,6 +1,11 @@
 ---
 # tasks file for peri
 
-- name: "Debug message for {{ role }}"
-  ansible.builtin.debug:
-    msg: "{{ peri_role }} tasks accessed"
+- name: Pacman package install
+  ansible.builtin.include_tasks: package_install.yml
+
+- name: Aur package install
+  ansible.builtin.include_tasks: aur_package_install.yml
+
+- name: ZSH addons install
+  ansible.builtin.include_tasks: zsh_addons_install.yml

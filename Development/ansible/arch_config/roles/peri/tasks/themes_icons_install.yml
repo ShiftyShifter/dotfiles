@@ -1,0 +1,20 @@
+---
+- name: Install GNOME themes and icons with ocs-url
+  block:
+    - name: Install GNOME themes and icons
+      ansible.builtin.command:
+        cmd: "ocs-url {{ item }}"
+      loop: "{{ gnome_themes_and_icons }}"
+      register: installation_result
+      ignore_errors: true
+      become: false
+
+    - name: Output installation results
+      ansible.builtin.debug:
+        var: installation_result
+    
+    - name: Set GNOME icon theme
+      ansible.builtin.shell: |
+        dbus-launch --exit-with-session gsettings set org.gnome.desktop.interface icon-theme 'YourIconTheme'
+      become_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}"
+      become: false

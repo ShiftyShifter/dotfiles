@@ -1,6 +1,8 @@
 ---
 # tasks file for post
 
-- name: "Debug message for {{ role }}"
-  ansible.builtin.debug:
-    msg: "{{ post_role }} tasks accessed"
+- name: Gnome-extensions install
+  ansible.builtin.include_tasks: gnome-extensions.yml
+
+- name: GNOME Customisation install
+  ansible.builtin.include_tasks: gnome_customisation.yml

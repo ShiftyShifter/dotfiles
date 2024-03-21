@@ -1,0 +1,22 @@
+---
+
+- name: ZSH - Addon repo clone and install
+  block:
+    - name: Install ZSH plugins
+      become: true
+      ansible.builtin.git:
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
+        depth: "{{ item.depth | default(omit) }}"
+      loop: "{{ zsh_addons }}"
+
+    # ****************************************
+    # OH-MY-ZSH and Powerlevel10K needs installing
+    # ****************************************
+
+
+    # - name: Install Powerlevel10K theme
+    #   ansible.builtin.package:
+    #     name:
+    #       - zsh-theme-powerlevel10k
+    #     state: present

@@ -1,0 +1,16 @@
+---
+# tasks file for pre
+
+- name: Install GNOME-Extensions and dependencies
+  block:
+    - name: Install python-tqdm
+      become: true
+      ansible.builtin.package:
+        name: python-tqdm
+        state: present
+
+    - name: Install GNOME extensions
+      ansible.builtin.command: "gext install {{ item }}"
+      register: return_code
+      changed_when: true
+      loop: "{{ gnome_extension_uuids }}"

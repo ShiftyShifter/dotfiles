@@ -4,3 +4,31 @@
 post_role: "post"
 
 directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/post/tasks"
+
+gnome_extension_uuids:
+      - Rounded_Corners@lennart-k
+      - apps-menu@gnome-shell-extensions.gcampax.github.com
+      - gsconnect@andyholmes.github.io
+      - hibernate-status@dromi
+      - quick-settings-tweaks@qwreey
+      - quick-settings-avatar@d-go
+      - suppress-startup-animation@icedman.github.com
+      - impatience@gfxmonk.net
+      - forge@jmmaranan.com
+      - clipboard-indicator@tudmotu.com
+      - Vitals@CoreCoding.com
+      - openweather-extension@penguin-teal.github.io
+      - blur-my-shell@aunetx
+      - color-picker@tuberry
+      - dash2dock-lite@icedman.github.com
+      - auto-move-windows@gnome-shell-extensions.gcampax.github.com
+      - drive-menu@gnome-shell-extensions.gcampax.github.com
+      - launch-new-instance@gnome-shell-extensions.gcampax.github.com
+      - light-style@gnome-shell-extensions.gcampax.github.com
+      - native-window-placement@gnome-shell-extensions.gcampax.github.com
+      - places-menu@gnome-shell-extensions.gcampax.github.com
+      - screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+      - user-theme@gnome-shell-extensions.gcampax.github.com
+      - window-list@gnome-shell-extensions.gcampax.github.com
+      - windowsNavigator@gnome-shell-extensions.gcampax.github.com
+      - workspace-indicator@gnome-shell-extensions.gcampax.github.com

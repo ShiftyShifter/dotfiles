@@ -4,3 +4,20 @@
 peri_role: "peri"
 
 directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/peri/tasks"
+
+zsh_custom: "/usr/share/oh-my-zsh/custom/plugins"
+
+zsh_addons:
+  - repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    dest: "{{ zsh_custom }}/zsh-autosuggestions"
+  - repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "{{ zsh_custom }}/zsh-syntax-highlighting"
+  - repo: "https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+    dest: "{{ zsh_custom }}/fast-syntax-highlighting"
+  - repo: "https://github.com/marlonrichert/zsh-autocomplete.git"
+    dest: "{{ zsh_custom }}/zsh-autocomplete"
+    depth: 1
+
+gnome_themes_and_icons:
+      - "https://www.gnome-look.org/p/1961046/" # Gruvbox Plus Icon Pack
+      - "https://www.opendesktop.org/p/1305251/" # Candy icons
