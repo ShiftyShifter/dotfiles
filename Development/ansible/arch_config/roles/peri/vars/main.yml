@@ -21,3 +21,29 @@ zsh_addons:
 gnome_themes_and_icons:
       - "https://www.gnome-look.org/p/1961046/" # Gruvbox Plus Icon Pack
       - "https://www.opendesktop.org/p/1305251/" # Candy icons
+
+files_to_copy:
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zprofile"
+    dest: "{{ home_dir }}.zprofile"
+
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zsh_history"
+    dest: "{{ home_dir }}.zsh_history"
+
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc"
+    dest: "{{ home_dir }}.zshrc"
+
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc.zni"
+    dest: "{{ home_dir }}.zshrc.zni"
+  
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10K.zsh"
+    dest: "{{ home_dir }}.p10K.zsh"
+  
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.my_aliases"
+    dest: "{{ home_dir }}.my_aliases"
+    
+folders_to_copy:
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/kitty/"
+    dest: "{{ home_dir }}.config/Kitty/"
+
+  
+  

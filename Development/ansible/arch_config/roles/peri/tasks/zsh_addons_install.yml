@@ -10,6 +10,22 @@
         depth: "{{ item.depth | default(omit) }}"
       loop: "{{ zsh_addons }}"
 
+    - name: Transfer Powerlevel10K and ZSH config files
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "0700"
+      loop: "{{ files_to_copy }}"
+
+    - name: Copy directory
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
+        mode: '0700'
+      loop: "{{ folders_to_copy }}"
+
     # ****************************************
     # OH-MY-ZSH and Powerlevel10K needs installing
     # ****************************************
