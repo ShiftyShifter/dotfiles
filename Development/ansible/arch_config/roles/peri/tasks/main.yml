@@ -1,11 +1,14 @@
 ---
 # tasks file for peri
 
-- name: Pacman package install
+- name: Pacman Package Install
   ansible.builtin.include_tasks: package_install.yml
 
-- name: Aur package install
+- name: Aur Package Install
   ansible.builtin.include_tasks: aur_package_install.yml
 
-- name: ZSH addons install
+- name: ZSH Addons Install
   ansible.builtin.include_tasks: zsh_addons_install.yml
+
+- name: Themes and Icons Install
+  ansible.builtin.include_tasks: themes_icons_install.yml

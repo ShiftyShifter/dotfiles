@@ -13,8 +13,8 @@
       ansible.builtin.debug:
         var: installation_result
     
-    - name: Set GNOME icon theme
-      ansible.builtin.shell: |
-        dbus-launch --exit-with-session gsettings set org.gnome.desktop.interface icon-theme 'YourIconTheme'
-      become_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}"
-      become: false
+    # - name: Set GNOME icon theme
+    #   ansible.builtin.shell: |
+    #     dbus-launch --exit-with-session gsettings set org.gnome.desktop.interface icon-theme 'YourIconTheme'
+    #   become_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}"
+    #   become: false
