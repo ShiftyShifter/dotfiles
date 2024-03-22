@@ -2,24 +2,24 @@
 # vars file for setup
 
 setup_gather_files:
-  - dest: "{{ home_dir }}.zprofile"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zprofile"
+  - src: "/home/dameon/.zprofile"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.zprofile"
 
-  - dest: "{{ home_dir }}.zsh_history"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zsh_history"
+  - src: "/home/dameon/.zsh_history"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.zsh_history"
 
-  - dest: "{{ home_dir }}.zshrc"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc"
+  - src: "/home/dameon/.zshrc"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.zshrc"
 
-  - dest: "{{ home_dir }}.zshrc.zni"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc.zni"
+  - src: "/home/dameon/.zshrc.zni"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.zshrc.zni"
 
-  - dest: "{{ home_dir }}.p10K.zsh"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10K.zsh"
+  - src: "/home/dameon/.p10K.zsh"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.p10K.zsh"
 
-  - dest: "{{ home_dir }}.my_aliases"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.my_aliases"
+  - src: "/home/dameon/.my_aliases"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.my_aliases"
 
 setup_gather_folders:
-  - dest: "{{ home_dir }}.config/Kitty/"
-    src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/kitty/"
+  - src: "/home/dameon/.config/Kitty/"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/kitty/"
