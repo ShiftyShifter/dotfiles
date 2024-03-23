@@ -1,0 +1,39 @@
+
+
+alias d_dump="dconf dump / > ~/.dconf_settings"
+
+alias ansible_pull="sudo ansible-pull -U https://github.com/ShiftyShifter/dotfiles.git --ask-vault-pass"
+
+alias pm="pacman -S"
+alias aur="pikaur"
+
+alias ee="subl ~/.zshrc ~/.my_aliases"
+alias ccd="chezmoi cd"
+alias ced="chezmoi edit"
+
+# function ce(){
+# 	if [[ $PWD != "~/.local/share/chezmoi " ]];
+# 	then
+# 		chezmoi cd
+# 		$SHELL
+# 		sleep 3
+# 		chezmoi edit
+# 	else
+# 		chezmoi edit
+# 	fi
+# }
+
+# alias clone="git clone https://github.com/"
+
+function clone(){
+	
+	print url: https://github.com/"$1"
+	git clone https://github.com/"$1";
+}
+
+# # $! captures the PID of the last process
+	# process_id=$!
+	# echo "PID: $process_id"
+	# # Waits for completion of PID process
+	# wait $process_id
+	# echo "Exit status: $?"

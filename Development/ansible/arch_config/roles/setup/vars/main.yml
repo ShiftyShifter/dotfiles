@@ -15,7 +15,7 @@ setup_gather_files:
     dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.zshrc.zni"
 
   - src: "/home/dameon/.p10K.zsh"
-    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.p10K.zsh"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.p10k.zsh"
 
   - src: "/home/dameon/.my_aliases"
     dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.my_aliases"

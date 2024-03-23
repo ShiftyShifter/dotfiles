@@ -35,7 +35,7 @@ files_to_copy:
   - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc.zni"
     dest: "{{ home_dir }}.zshrc.zni"
   
-  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10K.zsh"
+  - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10k.zsh"
     dest: "{{ home_dir }}.p10K.zsh"
   
   - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.my_aliases"
