@@ -8,7 +8,7 @@
   ansible.builtin.include_tasks: aur_package_install.yml
 
 - name: ZSH Addons Install
-  ansible.builtin.include_tasks: zsh_addons_install.yml
+  ansible.builtin.include_tasks: resources_install.yml
 
 - name: Themes and Icons Install
   ansible.builtin.include_tasks: themes_icons_install.yml

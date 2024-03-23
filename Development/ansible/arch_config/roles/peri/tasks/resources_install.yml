@@ -1,6 +1,6 @@
 ---
 
-- name: ZSH - Addon repo clone and install
+- name: Install resources and config files
   block:
     - name: Install ZSH plugins
       become: true
@@ -10,14 +10,14 @@
         depth: "{{ item.depth | default(omit) }}"
       loop: "{{ zsh_addons }}"
 
-    - name: Transfer Powerlevel10K and ZSH config files
+    - name: Placing files
       ansible.builtin.copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
         mode: "0700"
       loop: "{{ files_to_copy }}"
 
-    - name: Copy directory
+    - name: Placing directory
       ansible.builtin.copy:
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
@@ -25,6 +25,24 @@
         group: "{{ user_name }}"
         mode: '0700'
       loop: "{{ folders_to_copy }}"
+
+    - name: Read password from vault file
+      set_fact:
+        my_password: "{{ lookup('file', '/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/group_vars/vault_ansible_become_pass.yml') }}"
+
+    - name: Decrypt the archive with Ansible Vault
+      ansible.builtin.command:
+        cmd: ansible-vault decrypt "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/dconf_backup.tar.gz"
+        stdin_add_newline: yes
+        stdin: "{{ my_password }}"
+      no_log: true
+
+    - name: Extract the archive to restore the dconf_backup directory
+      ansible.builtin.unarchive:
+        src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/dconf_backup.tar.gz"
+        dest: "{{ home_dir }}"
+        remote_src: yes
+
 
     # ****************************************
     # OH-MY-ZSH and Powerlevel10K needs installing

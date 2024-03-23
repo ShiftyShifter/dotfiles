@@ -19,7 +19,17 @@ setup_gather_files:
 
   - src: "/home/dameon/.my_aliases"
     dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/.my_aliases"
+  
+  - src: "/tmp/dconf_backups.tar.gz"
+    dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/dconf_backups.tar.gz"
 
 setup_gather_folders:
-  - src: "/home/dameon/.config/Kitty/"
+  - src: "/home/dameon/.config/kitty/"
     dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/kitty/"
+  
+  # - src: "/home/dameon/dconf_backups"
+  #   dest: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/dconf_backups"
+
+setup_user_name: "dameon"
+
+setup_my_password: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/group_vars/vault_ansible_become_pass.yml"
