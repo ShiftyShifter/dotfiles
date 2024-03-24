@@ -26,14 +26,15 @@
         mode: '0700'
       loop: "{{ folders_to_copy }}"
 
-    - name: Read password from vault file
-      set_fact:
-        my_password: "{{ lookup('file', '{{ my_password }}') }}"
+    - name: Include encrypted password from vault file
+      include_vars:
+        file: "{{ source_dir }}/{{ ansible_dev_dir }}/group_vars/vault_ansible_become_pass.yml"
+
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:
         cmd: ansible-vault decrypt ""/tmp/dconf_backups.tar.gz""
         stdin_add_newline: yes
-        stdin: "{{ my_password }}"
+        stdin: "{{ become_pass }}"
       no_log: true
 
     - name: Extract the archive to restore the dconf_backup directory

@@ -25,16 +25,17 @@
         var: tar_result
 
 
-    - name: Read password from vault file
-      set_fact:
-        my_password: "{{ lookup('file', '{{ my_password }}') }}"
+    - name: Include encrypted password from vault file
+      include_vars:
+        file: "{{ source_dir }}/{{ ansible_dev_dir }}/group_vars/vault_ansible_become_pass.yml"
+
 
 
     - name: Encrypt the archive with Ansible Vault
       ansible.builtin.command:
         cmd: ansible-vault encrypt "/tmp/dconf_backups.tar.gz"
         stdin_add_newline: yes
-        stdin: "{{ my_password }}"
+        stdin: "{{ become_pass }}"
 
 
 - name: Gather Resources
