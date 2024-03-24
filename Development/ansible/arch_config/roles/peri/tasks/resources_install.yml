@@ -32,25 +32,13 @@
 
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:
-        cmd: ansible-vault decrypt "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/dconf_backup.tar.gz"
+        cmd: ansible-vault decrypt ""/tmp/dconf_backups.tar.gz""
         stdin_add_newline: yes
         stdin: "{{ my_password }}"
       no_log: true
 
     - name: Extract the archive to restore the dconf_backup directory
       ansible.builtin.unarchive:
-        src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/dconf_backup.tar.gz"
+        src: "/tmp/dconf_backups.tar.gz"
         dest: "{{ home_dir }}"
-        remote_src: yes
-
-
-    # ****************************************
-    # OH-MY-ZSH and Powerlevel10K needs installing
-    # ****************************************
-
-
-    # - name: Install Powerlevel10K theme
-    #   ansible.builtin.package:
-    #     name:
-    #       - zsh-theme-powerlevel10k
-    #     state: present
+        mode: "0700"
