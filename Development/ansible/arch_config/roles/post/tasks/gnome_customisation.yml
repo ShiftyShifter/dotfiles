@@ -5,7 +5,7 @@
     - name: Copy wallpaper file
       become: true
       ansible.builtin.copy:
-        src: "{{ home_Dir }}/{{ ansible_dev_dir }}/resources/images/ArchLinux_bkg.png"
+        src: "{{ home_Dir }}/{{ ansible_dir }}/resources/images/ArchLinux_bkg.png"
         dest: /usr/share/backgrounds/ansible-wallpaper.png
         owner: root
         group: root

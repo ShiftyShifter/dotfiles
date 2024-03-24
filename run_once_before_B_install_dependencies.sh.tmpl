@@ -10,8 +10,8 @@ copy_files() {
         echo "Reflector service and timer files already installed"
     else
         echo "Installing Reflector service and timer files."
-        sudo cp {{ source_dir }}/{{ ansible_dev_dir }}/resources/files/reflector.service /etc/systemd/system/
-        sudo cp {{ source_dir }}/{{ ansible_dev_dir }}/resources/files/reflector.timer /etc/systemd/system/
+        sudo cp {{ ansible_dir }}/resources/files/reflector.service /etc/systemd/system/
+        sudo cp {{ ansible_dir }}/resources/files/reflector.timer /etc/systemd/system/
         
     fi
 }

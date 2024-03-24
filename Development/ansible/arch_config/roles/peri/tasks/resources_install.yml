@@ -28,7 +28,7 @@
 
     - name: Include encrypted password from vault file
       include_vars:
-        file: "{{ source_dir }}/{{ ansible_dev_dir }}/group_vars/vault_ansible_become_pass.yml"
+        file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
 
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:

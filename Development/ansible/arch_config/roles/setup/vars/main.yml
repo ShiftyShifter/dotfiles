@@ -3,28 +3,28 @@
 
 setup_gather_files:
   - src: "{{ home_dir }}/.zprofile"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zprofile"
+    dest: "{{ ansible_dir }}/resources/files/.zprofile"
 
   - src: "{{ home_dir }}/.zsh_history"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zsh_history"
+    dest: "{{ ansible_dir }}/resources/files/.zsh_history"
 
   - src: "{{ home_dir }}/.zshrc"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc"
+    dest: "{{ ansible_dir }}/resources/files/.zshrc"
 
   - src: "{{ home_dir }}/.zshrc.zni"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.zshrc.zni"
+    dest: "{{ ansible_dir }}/resources/files/.zshrc.zni"
 
   - src: "{{ home_dir }}/.p10k.zsh"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10k.zsh"
+    dest: "{{ ansible_dir }}/resources/files/.p10k.zsh"
 
   - src: "{{ home_dir }}/.my_aliases"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.my_aliases"
+    dest: "{{ ansible_dir }}/resources/files/.my_aliases"
   
   - src: "/tmp/dconf_backups.tar.gz"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/dconf_backups.tar.gz"
+    dest: "{{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
 
 setup_gather_folders:
   - src: "{{ home_dir }}/.config/kitty/"
-    dest: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/kitty/"
+    dest: "{{ ansible_dir }}/resources/files/kitty/"
 
 

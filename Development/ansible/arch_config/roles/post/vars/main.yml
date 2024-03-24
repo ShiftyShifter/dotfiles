@@ -3,7 +3,7 @@
 
 post_role: "post"
 
-directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/post/tasks"
+directory: "{{ source_dir:}}/{{ ansible_dir: }}/roles/post/tasks"
 
 gnome_extension_uuids:
       - Rounded_Corners@lennart-k

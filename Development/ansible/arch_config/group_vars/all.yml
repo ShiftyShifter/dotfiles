@@ -3,7 +3,7 @@ user_name: "dameon"
 home_dir: "/home/{{ user_name }}"
 source_dir: "{{ home_dir }}/.local/share/chezmoi"
 
-ansible_dev_dir: "Development/ansible/arch_config"
+ansible_dir: "{{ source_dir }}/Development/ansible/arch_config"
 
-my_password: "{{ source_dir }}/{{ ansible_dev_dir }}/group_vars/vault_ansible_become_pass.yml"
+my_password: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
 
