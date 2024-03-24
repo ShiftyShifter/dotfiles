@@ -5,17 +5,17 @@
   block:
     - name: Ensure backup directory exists
       ansible.builtin.file:
-        path: "/home/{{ setup_user_name }}/dconf_backups"
+        path: "{{ home_dir }}/dconf_backups"
         state: directory
         mode: '0755'
 
     - name: Backup current dconf settings
       ansible.builtin.shell:
-        cmd: dconf dump / > "/home/{{ setup_user_name }}/dconf_backups/dconf-settings-backup-$(date +%Y%m%d-%H%M%S).ini"
+        cmd: dconf dump / > "{{ home_dir }}/dconf_backups/dconf-settings-backup-$(date +%Y%m%d-%H%M%S).ini"
 
     - name: Archive the dconf_backup directory
       ansible.builtin.shell:
-        cmd: "tar -czvf /tmp/dconf_backups.tar.gz -C /home/{{ setup_user_name }}/ dconf_backups"
+        cmd: "tar -czvf /tmp/dconf_backups.tar.gz -C {{ home_dir }}/ dconf_backups"
       register: tar_result
       failed_when: tar_result.rc != 0
 
