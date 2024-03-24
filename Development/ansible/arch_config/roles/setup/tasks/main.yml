@@ -27,16 +27,22 @@
       ansible.builtin.include_tasks: gather_resources.yml
 
 
-    - name: Include encrypted password from vault file
-      include_vars:
-        file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
-        name: vault_vars
+    # - name: Include encrypted password from vault file
+    #   include_vars:
+    #     file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
+    #     name: vault_vars
+
+    - name: Decrypt password
+      ansible.builtin.command:
+        cmd: "ansible-vault decrypt {{ ansible_dir }}/group_vars/vault_pass.pass"
 
     - name: Encrypt the archive with Ansible Vault
-      ansible.builtin.shell:
-        cmd: "ansible-vault encrypt --vault-password-file <(echo {{ vault_vars.vault_pass }}) {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
-        # stdin_add_newline: yes
-        # stdin: "{{ vault_vars.vault_pass }}"
+      ansible.builtin.command:
+        cmd: "ansible-vault encrypt --vault-password-file {{ my_password }} {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
+
+    - name: Encrypt password
+      ansible.builtin.command:
+        cmd: "ansible-vault encrypt {{ ansible_dir }}/group_vars/vault_pass.pass"
 
 
 

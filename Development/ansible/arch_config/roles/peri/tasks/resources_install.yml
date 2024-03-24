@@ -10,16 +10,14 @@
         depth: "{{ item.depth | default(omit) }}"
       loop: "{{ zsh_addons }}"
 
-    # - name: Include encrypted password from vault file
-    #   include_vars:
-    #     file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
+    - name: Include encrypted password from vault file
+      include_vars:
+        file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
+        name: vault_vars
 
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:
         cmd: "ansible-vault decrypt --vault-password-file <(echo {{ vault_vars.vault_pass }}) {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
-      #   stdin_add_newline: yes
-      #   stdin: "{{ become_pass }}"
-      # no_log: true
 
 
     - name: Placing files
