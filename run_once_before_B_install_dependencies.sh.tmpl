@@ -10,8 +10,8 @@ copy_files() {
         echo "Reflector service and timer files already installed"
     else
         echo "Installing Reflector service and timer files."
-        sudo cp {{ .chezmoi.sourceDir }}/Development/ansible/arch_config/resources/files/reflector.service /etc/systemd/system/
-        sudo cp {{ .chezmoi.sourceDir }}/Development/ansible/arch_config/resources/files/reflector.timer /etc/systemd/system/
+        sudo cp {{ source_dir }}/{{ ansible_dev_dir }}/resources/files/reflector.service /etc/systemd/system/
+        sudo cp {{ source_dir }}/{{ ansible_dev_dir }}/resources/files/reflector.timer /etc/systemd/system/
         
     fi
 }
@@ -49,14 +49,14 @@ update_system(){
 
 install_dependencies(){
     # Install "age" Encryption tool
-    if ! [[ $(command -v age) ]];
-    then
-        echo "Installing package 'age' encryption tool..."
+    # if ! [[ $(command -v age) ]];
+    # then
+    #     echo "Installing package 'age' encryption tool..."
 
-        sudo pacman -S age
+    #     sudo pacman -S age
 
-        echo "age package installed"
-    fi
+    #     echo "age package installed"
+    # fi
 
     # Install "Ansible" Automation tool
     if ! [[ $(command -v ansible) ]];

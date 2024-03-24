@@ -27,7 +27,7 @@
 
     - name: Read password from vault file
       set_fact:
-        my_password: "{{ lookup('file', '{{ setup_my_password }}') }}"
+        my_password: "{{ lookup('file', '{{ my_password }}') }}"
 
 
     - name: Encrypt the archive with Ansible Vault

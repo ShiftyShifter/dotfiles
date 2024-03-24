@@ -3,7 +3,7 @@
 
 peri_role: "peri"
 
-directory: "{{ source_dir:}}/{{ ansible_dev_dir: }}/roles/peri/tasks"
+directory: "{{ source_dir}}/{{ ansible_dev_dir }}/roles/peri/tasks"
 
 zsh_custom: "/usr/share/oh-my-zsh/custom/plugins"
 
@@ -38,7 +38,7 @@ files_to_copy:
   - src: "{{ source_dir }}/{{ ansible_dev_dir }}/resources/files/.p10k.zsh"
     dest: "{{ home_dir }}.p10k.zsh"
   
-  - src: "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/resources/files/dconf_backups.tar.gz"
+  - src: "{{ source_dir }}/{{ansible_dev_dir }}/resources/files/dconf_backups.tar.gz"
     dest: "/tmp/dconf_backups.tar.gz"
 
     
