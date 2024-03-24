@@ -33,9 +33,9 @@
 
     - name: Encrypt the archive with Ansible Vault
       ansible.builtin.command:
-        cmd: ansible-vault encrypt "/tmp/dconf_backups.tar.gz"
-        stdin_add_newline: yes
-        stdin: "{{ become_pass }}"
+        cmd: "ansible-vault encrypt --vault_password-file {{ my_password }} /tmp/dconf_backups.tar.gz"
+        # stdin_add_newline: yes
+        # stdin: "{{ become_pass }}"
 
 
 - name: Gather Resources
