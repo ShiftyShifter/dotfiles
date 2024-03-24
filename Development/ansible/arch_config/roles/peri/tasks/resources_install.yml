@@ -16,16 +16,11 @@
 
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:
-        cmd: "ansible-vault decrypt --vault-password-file {{ my_password }} /tmp/dconf_backups.tar.gz"
+        cmd: "ansible-vault decrypt --vault-password-file <(echo {{ vault_vars.vault_pass }}) {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
       #   stdin_add_newline: yes
       #   stdin: "{{ become_pass }}"
       # no_log: true
 
-    - name: Extract the archive to restore the dconf_backup directory
-      ansible.builtin.unarchive:
-        src: "/tmp/dconf_backups.tar.gz"
-        dest: "{{ home_dir }}"
-        mode: "0700"
 
     - name: Placing files
       ansible.builtin.copy:
@@ -43,4 +38,9 @@
         mode: '0700'
       loop: "{{ folders_to_copy }}"
 
+    - name: Extract the archive to restore the dconf_backup directory
+      ansible.builtin.unarchive:
+        src: "/tmp/dconf_backups.tar.gz"
+        dest: "{{ home_dir }}"
+        mode: "0700"
     

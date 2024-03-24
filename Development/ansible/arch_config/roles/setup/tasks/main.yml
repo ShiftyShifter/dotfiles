@@ -20,25 +20,24 @@
       failed_when: tar_result.rc != 0
 
   
-    - name: Debug Tar Result
-      debug:
-        var: tar_result
+    # - name: Debug Tar Result
+    #   debug:
+    #     var: tar_result
+    - name: Gather Resources
+      ansible.builtin.include_tasks: gather_resources.yml
 
 
     - name: Include encrypted password from vault file
       include_vars:
         file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
-
-
+        name: vault_vars
 
     - name: Encrypt the archive with Ansible Vault
-      ansible.builtin.command:
-        cmd: "ansible-vault encrypt --vault_password-file {{ my_password }} /tmp/dconf_backups.tar.gz"
+      ansible.builtin.shell:
+        cmd: "ansible-vault encrypt --vault-password-file <(echo {{ vault_vars.vault_pass }}) {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
         # stdin_add_newline: yes
-        # stdin: "{{ become_pass }}"
+        # stdin: "{{ vault_vars.vault_pass }}"
 
 
-- name: Gather Resources
-  ansible.builtin.include_tasks: gather_resources.yml
 
 
