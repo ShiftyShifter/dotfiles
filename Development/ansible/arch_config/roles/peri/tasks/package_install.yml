@@ -39,6 +39,8 @@
         - kitty
         - man-db
         - man-pages
+        - qt5-wayland
+        - qt6-wayland
         - dconf
       state: present
 

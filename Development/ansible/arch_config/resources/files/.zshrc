@@ -22,10 +22,10 @@ export ZSH="/usr/share/oh-my-zsh"
 # Sublime Text PATH
 export PATH="/usr/bin/subl:$PATH"
 
-export PATH="/home/dameon/Development/android-studio/bin:$PATH"
-export PATH="/home/dameon/Development/flutter_sdk/flutter/bin:$PATH"
-export PATH="/var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin:$PATH"
-export CHROME_EXECUTABLE="/var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome"
+# export PATH="/home/dameon/Development/android-studio/bin:$PATH"
+# export PATH="/home/dameon/Development/flutter_sdk/flutter/bin:$PATH"
+# export PATH="/var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin:$PATH"
+# export CHROME_EXECUTABLE="/var/lib/flatpak/app/com.google.Chrome/x86_64/stable/active/export/bin/com.google.Chrome"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -141,18 +141,18 @@ export EDITOR='subl'
 export OPEN="gnome-open"
 export BROWSER="firefox"
 
-export PATH="$HOME/.dotfiles/helpers/b64/:$PATH"
-export PATH="$HOME/.dotfiles/helpers/code/:$PATH"
-export PATH="$HOME/.dotfiles/helpers/md/:$PATH"
-export PATH="$HOME/.dotfiles/helpers/open/:$PATH"
-export PATH="$HOME/.dotfiles/helpers/search/:$PATH"
-export PATH="$HOME/.dotfiles/helpers/terminal/:$PATH"
-chmod +x ~/.dotfiles/helpers/**/* ~/.dotfiles/helpers/**/.[!.]*
+# export PATH="$HOME/.dotfiles/helpers/b64/:$PATH"
+# export PATH="$HOME/.dotfiles/helpers/code/:$PATH"
+# export PATH="$HOME/.dotfiles/helpers/md/:$PATH"
+# export PATH="$HOME/.dotfiles/helpers/open/:$PATH"
+# export PATH="$HOME/.dotfiles/helpers/search/:$PATH"
+# export PATH="$HOME/.dotfiles/helpers/terminal/:$PATH"
+# chmod +x ~/.dotfiles/helpers/**/* ~/.dotfiles/helpers/**/.[!.]*
 
-# Custom
-[ -f ~/.dotfiles/.aliases ] && . ~/.dotfiles/.aliases
-[ -f ~/.dotfiles/.colors ] && . ~/.dotfiles/.colors
-[ -f ~/.dotfiles/.hooks ] && . ~/.dotfiles/.hooks
+# # Custom
+# [ -f ~/.dotfiles/.aliases ] && . ~/.dotfiles/.aliases
+# [ -f ~/.dotfiles/.colors ] && . ~/.dotfiles/.colors
+# [ -f ~/.dotfiles/.hooks ] && . ~/.dotfiles/.hooks
 
 # pyenv shims setup
 export PYENV_ROOT="$HOME/.pyenv"

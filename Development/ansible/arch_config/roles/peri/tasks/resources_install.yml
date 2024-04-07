@@ -10,14 +10,61 @@
         depth: "{{ item.depth | default(omit) }}"
       loop: "{{ zsh_addons }}"
 
-    - name: Include encrypted password from vault file
-      include_vars:
-        file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
-        name: vault_vars
+    # - name: Include encrypted password from vault file
+    #   include_vars:
+    #     file: "{{ ansible_dir }}/group_vars/vault_ansible_become_pass.yml"
+    #     name: vault_vars
+
+    - name: Decrypt vault_pass
+      ansible.builtin.command:
+        cmd: "ansible-vault view {{ ansible_dir }}/group_vars/vault_pass.pass"
+      register: vault_password
+      # no_log: true  # Prevents logging of sensitive information
+      check_mode: no
+      changed_when: false
+
+
+    - name: Write decrypted vault password to a secure temporary file
+      ansible.builtin.tempfile:
+        state: file
+        suffix: .vault
+      register: temp_vault_password_file
+      check_mode: no
+    
+    - name: Ensure the decrypted vault password is stored in the temporary file
+      ansible.builtin.copy:
+        content: "{{ vault_password.stdout }}"
+        dest: "{{ temp_vault_password_file.path }}"
+        mode: '0600'
+      check_mode: no
+
+    # - name: Check if the archive is already decrypted
+    #   ansible.builtin.command:
+    #     cmd: "ansible-vault view --vault-password-file {{ temp_vault_password_file.path }} {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
+    #   register: vault_check
+    #   ignore_errors: yes
+    #   changed_when: false
 
     - name: Decrypt the archive with Ansible Vault
       ansible.builtin.command:
-        cmd: "ansible-vault decrypt --vault-password-file <(echo {{ vault_vars.vault_pass }}) {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
+        cmd: "ansible-vault decrypt --vault-password-file {{ temp_vault_password_file.path }} {{ ansible_dir }}/resources/files/dconf_backups.tar.gz"
+      register: decrypt_result
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Check decryption result
+      fail:
+        msg: "Decryption failed due to an unexpected error."
+      when:
+        - decrypt_result is failed
+        - "'input is not vault encrypted data' not in decrypt_result.stderr"
+
+
+    - name: Remove the temporary vault password file
+      ansible.builtin.file:
+        path: "{{ temp_vault_password_file.path }}"
+        state: absent
+      check_mode: no
 
 
     - name: Placing files

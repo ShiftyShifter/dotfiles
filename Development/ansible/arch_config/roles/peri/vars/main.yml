@@ -3,7 +3,7 @@
 
 peri_role: "peri"
 
-directory: "{{ source_dir}}/{{ ansible_dir }}/roles/peri/tasks"
+directory: "{{ ansible_dir }}/roles/peri/tasks"
 
 zsh_custom: "/usr/share/oh-my-zsh/custom/plugins"
 
@@ -19,32 +19,35 @@ zsh_addons:
     depth: 1
 
 gnome_themes_and_icons:
-      - "https://www.gnome-look.org/p/1961046/" # Gruvbox Plus Icon Pack
-      - "https://www.opendesktop.org/p/1305251/" # Candy icons
+      - "ocs://www.gnome-look.org/p/1961046/" # Gruvbox Plus Icon Pack
+      - "ocs://www.opendesktop.org/p/1305251/" # Candy icons
 
 files_to_copy:
   - src: "{{ ansible_dir }}/resources/files/.zprofile"
-    dest: "{{ home_dir }}.zprofile"
+    dest: "{{ home_dir }}/.zprofile"
 
   - src: "{{ ansible_dir }}/resources/files/.zsh_history"
-    dest: "{{ home_dir }}.zsh_history"
+    dest: "{{ home_dir }}/.zsh_history"
 
   - src: "{{ ansible_dir }}/resources/files/.zshrc"
-    dest: "{{ home_dir }}.zshrc"
+    dest: "{{ home_dir }}/.zshrc"
 
   - src: "{{ ansible_dir }}/resources/files/.zshrc.zni"
-    dest: "{{ home_dir }}.zshrc.zni"
+    dest: "{{ home_dir }}/.zshrc.zni"
   
   - src: "{{ ansible_dir }}/resources/files/.p10k.zsh"
-    dest: "{{ home_dir }}.p10k.zsh"
+    dest: "{{ home_dir }}/.p10k.zsh"
+    
+  - src: "{{ ansible_dir }}/resources/files/.my_aliasesced"
+    dest: "{{ home_dir }}/.my_aliases"
   
-  - src: "{{ source_dir }}/{{ansible_dir }}/resources/files/dconf_backups.tar.gz"
+  - src: "{{ansible_dir }}/resources/files/dconf_backups.tar.gz"
     dest: "/tmp/dconf_backups.tar.gz"
 
     
 folders_to_copy:
   - src: "{{ ansible_dir }}/resources/files/kitty/"
-    dest: "{{ home_dir }}.config/kitty/"
+    dest: "{{ home_dir }}/.config/kitty/"
   
   # - src: "{{ ansible_dir }}/resources/files/dconf_backup/"
   #   dest: "{{ home_dir }}.config/dconf_backup/"

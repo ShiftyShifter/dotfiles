@@ -18,13 +18,14 @@
             manager: pacman
 
         - name: Install aur repo packages
+          become: true
           aur:
             name: "{{ item }}"
             state: latest
             use: pikaur
           loop:
             - neovim
-            - mhwd-nvidia-470xx
+            # - mhwd-nvidia-470xx
             - gdm-settings
             - gnome-extensions-cli
             - extension-manager
@@ -36,5 +37,8 @@
             - youtube-music-bin
             - oh-my-zsh-git
             - zsh-theme-powerlevel10k
+            - google-chrome
+            - android-studio
+            - flutter
           when: "item not in ansible_facts.packages.keys()"
 

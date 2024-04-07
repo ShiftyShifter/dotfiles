@@ -5,21 +5,35 @@
     - name: Copy wallpaper file
       become: true
       ansible.builtin.copy:
-        src: "{{ home_Dir }}/{{ ansible_dir }}/resources/images/ArchLinux_bkg.png"
+        src: "{{ ansible_dir }}/resources/images/ArchLinux_bkg.png"
         dest: /usr/share/backgrounds/ansible-wallpaper.png
         owner: root
-        group: root
         mode: "0444"
+        group: root
 
     # - name: Reset dconf to default
     #   ansible.builtin.command: "dconf reset -f /"
     #   register: return_code
     #   changed_when: true
 
-    - name: Load dconf backup
-      ansible.builtin.shell: "dconf load / < {{ home_Dir }}/dconf_dump.conf"
+    # - name: Load dconf backup
+    #   ansible.builtin.shell: "dconf load / < {{ home_dir }}/dconf_dump.conf"
+    #   register: return_code
+    #   changed_when: true
+
+    - name: Find the latest backup file
+      ansible.builtin.shell:
+        cmd: "ls -t {{ home_dir }}/dconf_backups/dconf-settings-backup-*.ini | head -n 1"
+      register: latest_backup
+      changed_when: false
+
+    - name: Load the latest dconf backup
+      ansible.builtin.shell:
+        cmd: "dconf load / < {{ latest_backup.stdout }}"
       register: return_code
       changed_when: true
+      ignore_errors: true
+
 
     - name: Create mimeapps.list if it doesn't exist
       become: true

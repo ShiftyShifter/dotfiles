@@ -4,6 +4,8 @@
     - name: Install GNOME themes and icons
       ansible.builtin.command:
         cmd: "ocs-url {{ item }}"
+      environment:
+        QT_QPA_PLATFORM: wayland
       loop: "{{ gnome_themes_and_icons }}"
       register: installation_result
       ignore_errors: true

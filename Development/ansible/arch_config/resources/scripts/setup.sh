@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 
-ansible-playbook -vvvv "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/setup.yml" --ask-vault-pass
+ansible-playbook "/home/dameon/.local/share/chezmoi/Development/ansible/arch_config/setup.yml" --ask-vault-pass
