@@ -1,20 +1,42 @@
 ---
-- name: Install GNOME themes and icons with ocs-url
+- name: Clone GNOME icons
   block:
-    - name: Install GNOME themes and icons
-      ansible.builtin.command:
-        cmd: "ocs-url {{ item }}"
-      environment:
-        QT_QPA_PLATFORM: wayland
-      loop: "{{ gnome_themes_and_icons }}"
-      register: installation_result
-      ignore_errors: true
-      become: false
-
-    - name: Output installation results
-      ansible.builtin.debug:
-        var: installation_result
+    - name: Ensure the repositories directory exists
+      ansible.builtin.file:
+        path: "{{ home_dir }}/tracked_repos"
+        state: directory
+        mode: '0755'
     
+    - name: Clone GNOME icons
+      include_tasks: clone_and_link.yml
+      loop: "{{ gnome_icons }}"
+      loop_control:
+        loop_var: icon_item
+
+
+  #   - name: Ensure individual repository directory exists
+  #     ansible.builtin.file:
+  #       path: "{{ home_dir }}/tracked_repos/{{ item.name }}"
+  #       state: directory
+  #       mode: '0755'
+    
+  #   - name: Clone repository if not already present
+  #     ansible.builtin.git:
+  #       repo: "{{ item.url }}"
+  #       dest: "{{ home_dir }}/tracked_repos/{{ item.name }}"
+  #       clone: yes
+  #       update: yes
+    
+  #   - name: Create symbolic link for the cloned theme or icon
+  #     ansible.builtin.file:
+  #       src: "{{ home_dir }}/tracked_repos/{{ item.name }}"
+  #       dest: "{{ home_dir }}/.local/share/icons/{{ item.name }}"
+  #       state: link
+  #       force: yes
+  # loop: "{{ gnome_icons }}"
+
+      
+
     # - name: Set GNOME icon theme
     #   ansible.builtin.shell: |
     #     dbus-launch --exit-with-session gsettings set org.gnome.desktop.interface icon-theme 'YourIconTheme'

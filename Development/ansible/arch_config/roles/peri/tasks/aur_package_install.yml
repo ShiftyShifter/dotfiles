@@ -39,6 +39,6 @@
             - zsh-theme-powerlevel10k
             - google-chrome
             - android-studio
-            - flutter
+            # - flutter
           when: "item not in ansible_facts.packages.keys()"
 

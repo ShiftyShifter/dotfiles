@@ -39,6 +39,7 @@
         - kitty
         - man-db
         - man-pages
+        - gnome-tweaks
         - qt5-wayland
         - qt6-wayland
         - dconf

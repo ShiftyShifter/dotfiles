@@ -18,9 +18,11 @@ zsh_addons:
     dest: "{{ zsh_custom }}/zsh-autocomplete"
     depth: 1
 
-gnome_themes_and_icons:
-      - "ocs://www.gnome-look.org/p/1961046/" # Gruvbox Plus Icon Pack
-      - "ocs://www.opendesktop.org/p/1305251/" # Candy icons
+gnome_icons:
+  - name: candy-icons
+    url: "https://github.com/EliverLara/candy-icons.git"
+  - name: Gruvbox-icons
+    url: "https://github.com/SylEleuth/gruvbox-plus-icon-pack.git"
 
 files_to_copy:
   - src: "{{ ansible_dir }}/resources/files/.zprofile"
@@ -38,7 +40,7 @@ files_to_copy:
   - src: "{{ ansible_dir }}/resources/files/.p10k.zsh"
     dest: "{{ home_dir }}/.p10k.zsh"
     
-  - src: "{{ ansible_dir }}/resources/files/.my_aliasesced"
+  - src: "{{ ansible_dir }}/resources/files/.my_aliases"
     dest: "{{ home_dir }}/.my_aliases"
   
   - src: "{{ansible_dir }}/resources/files/dconf_backups.tar.gz"

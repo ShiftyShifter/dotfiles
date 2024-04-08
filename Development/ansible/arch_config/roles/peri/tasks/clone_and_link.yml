@@ -1,0 +1,25 @@
+- name: Ensure the repositories directory exists
+  ansible.builtin.file:
+    path: "{{ home_dir }}/tracked_repos"
+    state: directory
+    mode: '0755'
+
+- name: Ensure individual repository directory exists
+  ansible.builtin.file:
+    path: "{{ home_dir }}/tracked_repos/{{ icon_item.name }}"
+    state: directory
+    mode: '0755'
+
+- name: Clone repository if not already present
+  ansible.builtin.git:
+    repo: "{{ icon_item.url }}"
+    dest: "{{ home_dir }}/tracked_repos/{{ icon_item.name }}"
+    clone: yes
+    update: yes
+
+- name: Create symbolic link for the cloned theme or icon
+  ansible.builtin.file:
+    src: "{{ home_dir }}/tracked_repos/{{ icon_item.name }}"
+    dest: "{{ home_dir }}/.local/share/icons/{{ icon_item.name }}"
+    state: link
+    force: yes
