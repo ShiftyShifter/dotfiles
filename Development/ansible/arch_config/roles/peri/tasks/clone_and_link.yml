@@ -17,9 +17,17 @@
     clone: yes
     update: yes
 
-- name: Create symbolic link for the cloned theme or icon
+- name: Find the index.theme file within the cloned directory
+  ansible.builtin.find:
+    paths: "{{ home_dir }}/tracked_repos/{{ icon_item.name }}"
+    patterns: 'index.theme'
+    recurse: yes
+  register: find_index_theme
+
+- name: Create symbolic link for the theme or icon
   ansible.builtin.file:
-    src: "{{ home_dir }}/tracked_repos/{{ icon_item.name }}"
+    src: "{{ find_index_theme.files[0].path | dirname }}"
     dest: "{{ home_dir }}/.local/share/icons/{{ icon_item.name }}"
     state: link
     force: yes
+  when: find_index_theme.matched > 0
